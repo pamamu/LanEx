@@ -1,0 +1,57 @@
+<section id="introd">
+    <h1 data-ng-hide="vm.borrado">Crear Favorito</h1>
+    <h1 data-ng-show="vm.borrado">Eliminar Favorito</h1>
+    <p>
+        Selecciona el usuario favorito:
+
+</section>
+
+<!--SECCION 5-->
+<section id="usuarios">
+    <div class="contenedormod">
+        <input data-ng-hide="vm.borrado" type="text" name="username" ng-pagination-search="vm.nofavoritos">
+        <input data-ng-show="vm.borrado" type="text" name="username" ng-pagination-search="vm.favoritos">
+        <div data-ng-hide="vm.borrado" class="contenedor2">
+            <div class="tarjeta2" ng-pagination=" usuario in vm.nofavoritos"
+                 ng-pagination-size="4">
+                <div class="imagen2">
+                    <img class="image2" data-ng-src="../images/personas/img_avatar{{ usuario.imagen }}.png"
+                         alt="Avatar">
+                    <div class="texto-mitad2">
+                        <a ng-href="" ng-click="vm.funciones.addFavorito(usuario)">
+                            <div class="texto-m2">
+                                Añadir Favorito
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    <h2>{{ usuario.username }}</h2>
+                    <h3>{{ usuario.nombre }} {{ usuario.apellidos }}</h3>
+            </div>
+        </div>
+        <div data-ng-hide="vm.borrado">
+            <ng-pagination-control pagination-id="vm.nofavoritos"></ng-pagination-control>
+        </div>
+        <div data-ng-show="vm.borrado" class="contenedor2">
+            <div class="tarjeta2" ng-pagination=" usuario in vm.favoritos" ng-pagination-size="3">
+                <div class="imagen2">
+                    <img class="image2" data-ng-src="../images/personas/img_avatar{{ usuario.imagen }}.png"
+                         alt="Avatar">
+                    <div class="texto-mitad2">
+                        <a ng-href="" ng-click="vm.funciones.eliminarFavorito(usuario)">
+                            <div class="texto-m2 borrar">
+                                Eliminar Favorito
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    <h2>{{ usuario.username }}</h2>
+                    <h3>{{ usuario.nombre }} {{ usuario.apellidos }}</h3>
+            </div>
+
+        </div>
+        <div data-ng-show="vm.borrado">
+            <ng-pagination-control pagination-id="vm.favoritos"></ng-pagination-control>
+        </div>
+    </div>
+</section>

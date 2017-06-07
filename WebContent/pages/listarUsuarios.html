@@ -1,0 +1,278 @@
+<section id="introd">
+    <h1>Directorio de usuarios</h1>
+    <p>
+        A continuación se muestra el directorio de los usuarios registrados en el sistema y
+        filtros para mostrarlos ordenados por algún atributo.
+    </p>
+    <form ng-submit="vm.funciones.mostrar()">
+        <div class="filtros">
+            <input type="text" id="buscar" name="username" ng-model="vm.searchuser.username">
+            <h2>Contacto Favorito</h2>
+
+            <select name="contacto_preferido" id="contacto_preferido" ng-model="vm.searchuser.contacto_preferido">
+                <option value="Twitter">
+                    Twitter
+                </option>
+                <option value="Teléfono">
+                    Teléfono
+                </option>
+                <option value="Email">
+                    Email
+                </option>
+            </select>
+
+            <h2>Nacionalidad</h2>
+
+            <ul class="paises">
+                <li>
+                    <input type="radio" id="alem" data-ng-model="vm.searchuser.nacionalidad" value="Alemana"
+                           name="nacionalidad"
+                           checked="checked">
+                    <label for="alem"><img src="../images/paises/alemania.png"
+                                           alt="bandera de alemania"></label>
+                </li>
+                <li>
+                    <input type="radio" id="chin" data-ng-model="vm.searchuser.nacionalidad" value="China"
+                           name="nacionalidad">
+                    <label for="chin"><img src="../images/paises/china.jpg" alt="bandera de china"></label>
+                </li>
+                <li>
+                    <input type="radio" id="esp" data-ng-model="vm.searchuser.nacionalidad" value="Española"
+                           name="nacionalidad">
+                    <label for="esp"><img src="../images/paises/espania.png"
+                                          alt="bandera de espania"></label>
+                </li>
+                <li>
+                    <input type="radio" id="franc" data-ng-model="vm.searchuser.nacionalidad" value="Francesa"
+                           name="nacionalidad">
+                    <label for="franc"><img src="../images/paises/francia.png"
+                                            alt="bandera de francia"></label>
+                </li>
+                <li>
+                    <input type="radio" id="ing" data-ng-model="vm.searchuser.nacionalidad" value="Inglesa"
+                           name="nacionalidad">
+                    <label for="ing"><img src="../images/paises/inglaterra.jpg"
+                                          alt="bandera de inglaterra"></label>
+                </li>
+                <li>
+                    <input type="radio" id="port" data-ng-model="vm.searchuser.nacionalidad" value="Portuguesa"
+                           name="nacionalidad">
+                    <label for="port"><img src="../images/paises/portugal.png"
+                                           alt="bandera de portugal"></label>
+                </li>
+                <li>
+                    <input type="radio" id="otro" value="otro" name="nacionalidad">
+                    <label for="otro"><img src="../images/paises/otro.png"
+                                           alt="otro"></label>
+                </li>
+                <li>
+                    <input type="text" name="otranacionalidad" data-ng-model="vm.searchuser.nacionalidad"
+                           id="pais-text">
+                </li>
+            </ul>
+            <h2>Idioma Hablado</h2>
+            <ul class="paises">
+                <li>
+                    <input type="radio" id="alem-i" data-ng-model="vm.searchuser.languages.idl" value="3" name="idioma"
+                           checked="checked">
+                    <label for="alem-i"><img src="../images/paises/alemania.png"
+                                             alt="bandera de alemania"></label>
+                </li>
+                <li>
+                    <input type="radio" id="chin-i" data-ng-model="vm.searchuser.languages.idl" value="5" name="idioma">
+                    <label for="chin-i"><img src="../images/paises/china.jpg"
+                                             alt="bandera de china"></label>
+                </li>
+                <li>
+                    <input type="radio" id="esp-i" data-ng-model="vm.searchuser.languages.idl" value="1" name="idioma">
+                    <label for="esp-i"><img src="../images/paises/espania.png"
+                                            alt="bandera de espania"></label>
+                </li>
+                <li>
+                    <input type="radio" id="franc-i" data-ng-model="vm.searchuser.languages.idl" value="2"
+                           name="idioma">
+                    <label for="franc-i"><img src="../images/paises/francia.png"
+                                              alt="bandera de francia"></label>
+                </li>
+                <li>
+                    <input type="radio" id="ing-i" data-ng-model="vm.searchuser.languages.idl" value="0" name="idioma">
+                    <label for="ing-i"><img src="../images/paises/inglaterra.jpg"
+                                            alt="bandera de inglaterra"></label>
+                </li>
+                <li>
+                    <input type="radio" id="port-i" data-ng-model="vm.searchuser.languages.idl" value="4" name="idioma">
+                    <label for="port-i"><img src="../images/paises/portugal.png"
+                                             alt="bandera de portugal"></label>
+                </li>
+                <li>
+                    <input type="radio" id="otro-i" value="otro-i" name="idioma">
+                    <label for="otro-i"><img src="../images/paises/otro.png"
+                                             alt="otro"></label>
+                </li>
+                <li>
+                    <select name="idioma" data-ng-model="vm.searchuser.languages.idl">
+                        <option value="{{ language.idl }}" data-ng-repeat="language in vm.languages_names">{{
+                            language.langname }}
+                        </option>
+                    </select>
+
+                </li>
+            </ul>
+            <h1>Nivel</h1>
+            <h2>Writing</h2>
+            <ul class="paises">
+                <li>
+                    <input type="radio" id="a1-w" data-ng-model="vm.skill.levelWriting" value="a1"
+                           name="nivel-writing" checked>
+                    <label for="a1-w"><img src="../images/niveles/A1.png" alt="a1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="a2-w" data-ng-model="vm.skill.levelWriting" value="a2"
+                           name="nivel-writing">
+                    <label for="a2-w"><img src="../images/niveles/A2.png" alt="a2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b1-w" data-ng-model="vm.skill.levelWriting" value="b1"
+                           name="nivel-writing">
+                    <label for="b1-w"><img src="../images/niveles/B1.png" alt="b1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b2-w" data-ng-model="vm.skill.levelWriting" value="b2"
+                           name="nivel-writing">
+                    <label for="b2-w"><img src="../images/niveles/B2.png" alt="b2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c1-w" data-ng-model="vm.skill.levelWriting" value="c1"
+                           name="nivel-writing">
+                    <label for="c1-w"><img src="../images/niveles/C1.png" alt="c1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c2-w" data-ng-model="vm.skill.levelWriting" value="c2"
+                           name="nivel-writing">
+                    <label for="c2-w"><img src="../images/niveles/C2.png" alt="c2r"></label>
+                </li>
+            </ul>
+            <h2>Reading</h2>
+            <ul class="paises">
+                <li>
+                    <input type="radio" id="a1-r" data-ng-model="vm.skill.levelReading" value="a1"
+                           name="nivel-reading" checked>
+                    <label for="a1-r"><img src="../images/niveles/A1.png" alt="a1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="a2-r" data-ng-model="vm.skill.levelReading" value="a2"
+                           name="nivel-reading">
+                    <label for="a2-r"><img src="../images/niveles/A2.png" alt="a2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b1-r" data-ng-model="vm.skill.levelReading" value="b1"
+                           name="nivel-reading">
+                    <label for="b1-r"><img src="../images/niveles/B1.png" alt="b1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b2-r" data-ng-model="vm.skill.levelReading" value="b2"
+                           name="nivel-reading">
+                    <label for="b2-r"><img src="../images/niveles/B2.png" alt="b2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c1-r" data-ng-model="vm.skill.levelReading" value="c1"
+                           name="nivel-reading">
+                    <label for="c1-r"><img src="../images/niveles/C1.png" alt="c1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c2-r" data-ng-model="vm.skill.levelReading" value="c2"
+                           name="nivel-reading">
+                    <label for="c2-r"><img src="../images/niveles/C2.png" alt="c2r"></label>
+                </li>
+            </ul>
+            <h2>Speaking</h2>
+            <ul class="paises">
+                <li>
+                    <input type="radio" id="a1-s" data-ng-model="vm.skill.levelSpeaking" value="a1"
+                           name="nivel-speaking" checked>
+                    <label for="a1-s"><img src="../images/niveles/A1.png" alt="a1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="a2-s" data-ng-model="vm.skill.levelSpeaking" value="a2"
+                           name="nivel-speaking">
+                    <label for="a2-s"><img src="../images/niveles/A2.png" alt="a2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b1-s" data-ng-model="vm.skill.levelSpeaking" value="b1"
+                           name="nivel-speaking">
+                    <label for="b1-s"><img src="../images/niveles/B1.png" alt="b1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="b2-s" data-ng-model="vm.skill.levelSpeaking" value="b2"
+                           name="nivel-speaking">
+                    <label for="b2-s"><img src="../images/niveles/B2.png" alt="b2"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c1-s" data-ng-model="vm.skill.levelSpeaking" value="c1"
+                           name="nivel-speaking">
+                    <label for="c1-s"><img src="../images/niveles/C1.png" alt="c1"></label>
+                </li>
+                <li>
+                    <input type="radio" id="c2-s" data-ng-model="vm.skill.levelSpeaking" value="c2"
+                           name="nivel-speaking">
+                    <label for="c2-s"><img src="../images/niveles/C2.png" alt="c2r"></label>
+                </li>
+            </ul>
+            Ordenar por...
+            <select name="orden" data-ng-model="vm.orden">
+                <option value="username">Nombre de Usuario</option>
+                <option value="nombre">Nombre</option>
+                <option value="apellidos">Apellidos</option>
+                <option value="fec_nac">Fecha de Nacimiento</option>
+                <option value="imagen">Imagen</option>
+                <option value="puntos">Puntos</option>
+            </select>
+            <div class="boton">
+                <input type="submit" value="Buscar Nivel">
+                <a href="" id="borrar" ng-click="vm.funciones.reiniciarfiltro()">Reiniciar Filtro</a>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section id="usuarios">
+    <div class="contenedor2">
+        <div class="tarjeta2" ng-repeat=" usuario in vm.users | filter:vm.searchuser | orderBy:vm.orden">
+            <div class="imagen2">
+                <img class="image2" data-ng-src="../images/personas/img_avatar{{ usuario.imagen }}.png"
+                     alt="Avatar">
+                <div class="texto-mitad2">
+                    <a ng-href="#/user/{{ usuario.idu }}">
+                        <div class="texto-m2">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Idioma</th>
+                                    <th><img class="mediano" src="../images/niveles/writing.png"
+                                             alt="writing"></th>
+                                    <th><img class="mediano" src="../images/niveles/speaking.png"
+                                             alt="speaking"></th>
+                                    <th><img class="mediano" src="../images/niveles/reading.png"
+                                             alt="reading"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-ng-repeat="userlanguage in usuario.languages track by $index">
+                                    <td>{{ usuario.languagesnames[$index] }}</td>
+                                    <td>{{ userlanguage.levelWriting.toUpperCase() }}</td>
+                                    <td>{{ userlanguage.levelSpeaking.toUpperCase() }}</td>
+                                    <td>{{ userlanguage.levelReading.toUpperCase() }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <a ng-href="#/user/{{ usuario.idu }}">
+                <h2>{{ usuario.username }}</h2>
+                <h3>{{ usuario.nombre }} {{ usuario.apellidos }}</h3>
+            </a>
+        </div>
+    </div>
+</section>

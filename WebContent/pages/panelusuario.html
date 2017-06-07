@@ -1,0 +1,199 @@
+<!--SECCION 1-->
+<section id="introd">
+    <h1>Panel de Usuario</h1>
+    <p>
+        A continuación se muestra el panel de usuario con la información del registro.
+    </p>
+
+</section>
+
+<!--SECCION 5-->
+<section class="info-usuario">
+    <div class="contenedor">
+        <div class="foto">
+            <img ng-src="../images/personas/img_avatar{{vm.user.imagen}}.png" alt="Avatar">
+        </div>
+        <div id="info_personal">
+            <h2>
+                Información Personal:
+            </h2>
+            <p><b>Nombre:</b> {{vm.user.nombre}}</p>
+            <p><b>Apellidos:</b> {{vm.user.apellidos}}</p>
+            <p><b>Email:</b> {{vm.user.email}}</p>
+            <p><b>Nacionalidad:</b> {{vm.user.nacionalidad}}</p>
+            <p><b>Fecha nacimiento:</b> {{vm.user.fec_nac}}</p>
+            <p><b>LanEx Points:</b> {{vm.user.puntos}} </p>
+
+            <div class="userLanguage" data-ng-repeat="usersLang in vm.userLangs">
+                <p><b>Idioma:</b> {{vm.userLangsNames[$index]}} </p>
+                <ul>
+                    <li><p><b>Speaking:</b> {{usersLang.levelSpeaking}}</p></li>
+                    <li><p><b>Writing:</b> {{usersLang.levelWriting}}</p></li>
+                    <li><p><b>Reading:</b> {{usersLang.levelReading}}</p></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="redes">
+            <a ng-href="https://twitter.com/{{vm.user.twitter}}" target="_blank">
+                <div class="icon-twitter">
+                    {{vm.user.twitter}}
+                </div>
+            </a>
+            <div class="icon-whatsapp">
+                {{vm.user.telefono}}
+            </div>
+        </div>
+    </div>
+    <div class="boton">
+        <a data-ng-href="#/users">Ver Usuarios</a>
+
+        <a data-ng-href="#/editUser" ng-show="vm.panelcontrol">Modificar Perfil</a>
+
+        <a data-ng-href="#/newcomment/{{ vm.user.idu }}" ng-hide="vm.panelcontrol">Nuevo Comentario</a>
+
+        <div ng-hide="vm.panelcontrol">
+
+            <a data-ng-href="https://twitter.com/intent/tweet?text={{ vm.user.twitter }}" target="_blank" ng-show="vm.user.contacto_preferido == 'Twitter'">Twitter</a>
+            <a data-ng-href="tel:+{{ vm.user.telefono }}" ng-show="vm.user.contacto_preferido == 'Teléfono'">Whatsapp</a>
+            <a data-ng-href="mailto:{{ vm.user.email }}?subject=LanEx" ng-show="vm.user.contacto_preferido == 'Email'">Email</a>
+
+        </div>
+
+        <a data-ng-href="#/newmensaje/{{ vm.user.idu }}" ng-hide="vm.panelcontrol">Mensaje</a>
+
+        <a href="" id="borrar" ng-click="vm.funciones.borrarUsuario()"
+           ng-show="vm.panelcontrol">Borrar</a>
+
+    </div>
+
+    <div ng-hide="vm.panelcontrol || vm.votado" id="valoracion_l">
+        <h2>Valoración</h2>
+        <div class="contenedor">
+            <a href="" ng-click="vm.funciones.modificarpuntos(1)">
+                <img src="../images/like.png" alt="añadir puntos">
+            </a>
+            <a href="" ng-click="vm.funciones.modificarpuntos(-1)">
+                <img src="../images/dislike.png" alt="eliminar puntos">
+            </a>
+        </div>
+    </div>
+
+
+    <div id="contactos" ng-show="vm.panelcontrol">
+        <h2>Contactos Favoritos</h2>
+        <div class="contenedor">
+            <div class="favorito" data-ng-repeat="favorito in vm.favoritos">
+                <a ng-href="#/user/{{favorito.idu}}">
+                    <div class="chip">
+                        <img ng-src="../images/personas/img_avatar{{favorito.imagen}}.png"
+                             alt="Avatar">
+                        {{favorito.nombre}}
+                    </div>
+                </a>
+            </div>
+
+            <a href="#/favorito/add">
+                <img src="../images/add_user.png" class="anadir" alt="añadir favorito">
+            </a>
+            <a href="#/favorito/delete">
+                <img src="../images/delete_user.png" class="anadir" alt="eliminar favorito">
+            </a>
+        </div>
+    </div>
+
+</section>
+<section class="valoraciones">
+    <h2>
+        Comentarios Recibidos
+    </h2>
+    <div class="contenedor">
+
+        <div class="tarjeta" data-ng-repeat="comentario in vm.comentariosRecibidos">
+            <a ng-href="#/user/{{ comentario.sender }}">
+                <img ng-src="../images/personas/img_avatar{{ comentario.emisor.imagen }}.png"
+                     alt="Avatar">
+            </a>
+            <div class="valoracion">
+                <h3>{{ comentario.emisor.username }}</h3>
+                <p>{{ comentario.text }}</p>
+            </div>
+
+            <div class="accion" ng-show="comentario.sender == vm.userlogued">
+                <a ng-href="#/comment/{{ comentario.idc }}"><img src="../images/editar.png"
+                                                                 alt="Editar comentario"/></a>
+                <a href="" data-ng-click="vm.funciones.borrarComentario(comentario.idc)"><img src="../images/borrar.png"
+                                                                                              alt="Borrar comentario"/></a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="valoraciones">
+    <h2>
+        Comentarios Enviados
+    </h2>
+    <div class="contenedor">
+
+        <div class="tarjeta" data-ng-repeat="comentario in vm.comentariosEnviados">
+            <a ng-href="#/user/{{ comentario.receiver }}">
+                <img ng-src="../images/personas/img_avatar{{ comentario.receptor.imagen }}.png"
+                     alt="Avatar">
+            </a>
+            <div class="valoracion">
+                <h3>{{ comentario.receptor.username }}</h3>
+                <p>{{ comentario.text }}</p>
+            </div>
+
+            <div class="accion" ng-show="comentario.sender == vm.userlogued">
+                <a ng-href="#/comment/{{ comentario.idc }}"><img src="../images/editar.png"
+                                                                 alt="Editar comentario"/></a>
+                <a href="" data-ng-click="vm.funciones.borrarComentario(comentario.idc)"><img src="../images/borrar.png"
+                                                                                              alt="Borrar comentario"/></a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="valoraciones" ng-show="vm.panelcontrol">
+    <h2>
+        Mensajes recibidos
+    </h2>
+    <div class="contenedor">
+
+        <div class="tarjeta" data-ng-repeat="mensaje in vm.mensajesRecibidos">
+            <a ng-href="#/user/{{ mensaje.sender }}">
+                <img ng-src="../images/personas/img_avatar{{ mensaje.emisor.imagen }}.png"
+                     alt="Avatar">
+            </a>
+            <div class="valoracion">
+                <h3>{{ mensaje.emisor.username }}</h3>
+                <p>{{ mensaje.text }}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="valoraciones" ng-show="vm.panelcontrol">
+    <h2>
+        Mensajes enviados
+    </h2>
+    <div class="contenedor">
+
+        <div class="tarjeta" data-ng-repeat="mensaje in vm.mensajesEnviados">
+            <a ng-href="#/user/{{ mensaje.receiver }}">
+                <img ng-src="../images/personas/img_avatar{{ mensaje.receptor.imagen }}.png"
+                     alt="Avatar">
+            </a>
+            <div class="valoracion">
+                <h3>{{ mensaje.receptor.username }}</h3>
+                <p>{{ mensaje.text }}</p>
+            </div>
+        </div>
+
+    </div>
+</section>

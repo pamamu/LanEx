@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" data-ng-app="lanexApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/panel_usuario.css">
+    <link rel="stylesheet" href="../assets/css/comentario.css">
+    <link rel="stylesheet" href="../assets/css/registro.css">
+    <link rel="stylesheet" href="../assets/css/directorio.css">
+    <link rel="stylesheet" href="../assets/css/directorio_vi2.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+    <!-- <base href="../"/>-->
+    <title>Panel de Usuario</title>
+</head>
+
+<body>
+<header class="main" data-ng-controller="mainAppCtrl as vm">
+    <input type="checkbox" id="btn-menu">
+    <label for="btn-menu"><img src="../images/menu-icon.png" alt="Icono de Menú"></label>
+    <nav class="menu">
+        <ul>
+            <li><a href="#/">Inicio</a></li>
+            <li><a href="#/">{{ vm.user.username }}</a></li>
+            <li><a href="../logout">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main data-ng-view>
+
+</main>
+
+
+<!-- Include the AngularJS library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+<script src="../js/angular/angular.js"></script>
+<script src="../js/angular/angular-route.js"></script>
+<script src="../js/angular/angular-pagination.js"></script>
+<!-- Modules -->
+<script src="../js/app.js"></script>
+<script src="../js/controllers.js"></script>
+<script src="../js/factories.js"></script>
+</body>
+
+</html>

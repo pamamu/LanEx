@@ -1,0 +1,103 @@
+/*
+ * Copyright (C) 2017 by Pablo Macias
+ * pamaciasm@alumnos.unex.es
+ *
+ * This program is free software; you can redistribute it andor modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ * Free Software Foundation, Inc.,
+ * 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
+#btn-menu {
+    display: none;
+}
+
+header img{
+    height: 30px;
+}
+
+header label {
+    display: none;
+    height: 30px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+header label:hover {
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.menu ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end
+}
+
+.menu li a:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.menu li a {
+    display: block;
+    padding: 16px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu ul ul {
+    display: none;
+}
+
+.menu ul li:hover ul {
+    background-color: rgba(0, 0, 0, 0.69);
+    display: block;
+    position: absolute;
+}
+
+@media (max-width: 540px) {
+    header label {
+        display: block;
+    }
+    .menu {
+        background: rgba(0, 0, 0, 0.69);
+        margin-left: -70%;
+        position: absolute;
+        transition: all 1s;
+        width: 30%;
+    }
+    .menu ul {
+        flex-direction: column;
+    }
+    .menu li {
+        border-top: 1px solid white;
+    }
+    #otro:checked ~ .menu {
+        margin: 0;
+    }
+    .menu ul li:hover ul {
+        display: block;
+        left: 100%;
+        top: 0;
+        transition: all 1s;
+    }
+    #banner{
+        background-color: black;
+        padding-top: 45px;
+        z-index: 0;
+    }
+}

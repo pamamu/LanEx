@@ -1,0 +1,221 @@
+<!--SECCION 1-->
+<section id="introd">
+    <h1>Edición de Perfil</h1>
+    <p>
+        Completa el siguiente formulario para editar el perfil:
+    </p>
+
+</section>
+
+
+<!--SECCION 5-->
+<section id="usuarios">
+    <form data-ng-submit="vm.funciones.editarUsuario()">
+        <div class="contenedor">
+            <div class="foto">
+                <img ng-src="../images/personas/img_avatar{{vm.user.imagen}}.png"
+                     alt="Avatar" id="img_perfil">
+                <p id="boton-subir"><select name="imagen" id="select_imagen" data-ng-model="vm.user.imagen">
+                    <optgroup label="Chico">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="6">3</option>
+                        <option value="8">4</option>
+                        <option value="9">5</option>
+                        <option value="11">6</option>
+                        <option value="14">7</option>
+                        <option value="15">8</option>
+                    </optgroup>
+                    <optgroup label="Chica">
+                        <option value="3">1</option>
+                        <option value="4">2</option>
+                        <option value="5">3</option>
+                        <option value="7">4</option>
+                        <option value="10">5</option>
+                        <option value="12">6</option>
+                        <option value="13">7</option>
+                        <option value="16">8</option>
+                    </optgroup>
+                </select>
+                </p>
+            </div>
+            <div class="formulario">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" autofocus
+                       placeholder="Username" data-ng-model="vm.user.username" disabled>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre"
+                       data-ng-model="vm.user.nombre" disabled>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos"
+                       data-ng-model="vm.user.apellidos" disabled>
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" name="nacionalidad" id="nacionalidad"
+                       placeholder="Nacionalidad" data-ng-model="vm.user.nacionalidad"
+                       disabled>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email"
+                       data-ng-model="vm.user.email" required>
+                <label for="nacim">Fecha Nacimiento</label>
+                <input type="text" id="nacim" name="nacim" data-ng-model="vm.user.fec_nac" disabled>
+                <label for="pass">Contraseña</label>
+                <input type="password" name="pass" id="pass" placeholder="Contraseña" data-ng-model="vm.user.password">
+            </div>
+            <div class="form_idiomas">
+                <div class="idioma">
+                    <div id="idioma1_select">
+                        <select name="idioma1"
+                                ng-options="language as language.langname for language in vm.languages | filter : vm.funciones.idioma_elegido track by language.idl "
+                                data-ng-model="vm.lang" ng-hide="vm.modificar"></select>
+                        <input class="editlang" name="idioma2" data-ng-model="vm.langedit" disabled
+                               ng-show="vm.modificar"/>
+
+                        <input type="button" value="+" ng-click="vm.funciones.add_idioma(vm.lang)"
+                               ng-hide="vm.modificar">
+                        <input type="button" value="EDIT" ng-click="vm.funciones.modificar_idioma_fin()"
+                               ng-show="vm.modificar">
+                        <br> Speaking:
+                        <select name="idioma1_oral" data-ng-model="vm.userL.levelSpeaking"
+                                ng-init="vm.userL.levelSpeaking='a1'">
+                            <optgroup label="Básico">
+                                <option value="a1">
+                                    A1
+                                </option>
+                                <option value="a2">
+                                    A2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Medio">
+                                <option value="b1">
+                                    B1
+                                </option>
+                                <option value="b2">
+                                    B2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Avanzado">
+                                <option value="c1">
+                                    C1
+                                </option>
+                                <option value="c2">
+                                    C2
+                                </option>
+                            </optgroup>
+                        </select>
+                        <br> Writing:
+                        <select name="idioma1_escrito" data-ng-model="vm.userL.levelWriting"
+                                ng-init="vm.userL.levelWriting='a1'">
+                            <optgroup label="Básico">
+                                <option value="a1">
+                                    A1
+                                </option>
+                                <option value="a2">
+                                    A2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Medio">
+                                <option value="b1">
+                                    B1
+                                </option>
+                                <option value="b2">
+                                    B2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Avanzado">
+                                <option value="c1">
+                                    C1
+                                </option>
+                                <option value="c2">
+                                    C2
+                                </option>
+                            </optgroup>
+                        </select>
+                        <br> Listening:
+                        <select name="idioma1_auditiva" data-ng-model="vm.userL.levelReading"
+                                ng-init="vm.userL.levelReading='a1'">
+                            <optgroup label="Básico">
+                                <option value="a1">
+                                    A1
+                                </option>
+                                <option value="a2">
+                                    A2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Medio">
+                                <option value="b1">
+                                    B1
+                                </option>
+                                <option value="b2">
+                                    B2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Avanzado">
+                                <option value="c1">
+                                    C1
+                                </option>
+                                <option value="c2">
+                                    C2
+                                </option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Idioma</th>
+                        <th><img class="mediano" src="../images/niveles/writing.png"
+                                 alt="writing"></th>
+                        <th><img class="mediano" src="../images/niveles/speaking.png"
+                                 alt="speaking"></th>
+                        <th><img class="mediano" src="../images/niveles/reading.png"
+                                 alt="reading"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="userlanguage in vm.userLangs track by $index">
+                        <td>{{ vm.nombres[$index]}}</td>
+                        <td>{{ userlanguage.levelWriting.toUpperCase() }}</td>
+                        <td>{{ userlanguage.levelSpeaking.toUpperCase() }}</td>
+                        <td>{{ userlanguage.levelReading.toUpperCase() }}</td>
+                        <td><img src="../images/edit.png" alt="editar" class="pequeno"
+                                 ng-click="vm.funciones.modificar_idioma($index)"></td>
+                        <td><img src="../images/delete.png" alt="borrar" class="pequeno"
+                                 ng-click="vm.funciones.delete_idioma($index)"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="rrss">
+                <div class="icon-twitter">
+                    <input type="text" name="twitter" id="twitter"
+                           placeholder="@usuario" data-ng-model="vm.user.twitter"
+                           disabled>
+                </div>
+                <div class="icon-whatsapp">
+                    <input type="tel" name="telefono" id="telefono"
+                           placeholder="+XX XXX XXX XXX" data-ng-model="vm.user.telefono"
+                           disabled>
+                </div>
+                <label for="contacto_preferido">Contacto Preferido</label>
+                <select name="contacto_preferido" id="contacto_preferido" data-ng-model="vm.user.contacto_preferido"
+                        disabled>
+                    <option value="Twitter">
+                        Twitter
+                    </option>
+                    <option value="Teléfono">
+                        Teléfono
+                    </option>
+                    <option value="Email">
+                        Email
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="boton">
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</section>
